@@ -5,6 +5,7 @@ export interface Note {
   title: string;
   content: string;
   tag: Tag;
+  createdAt: string;
 }
 
 export interface NewNote {

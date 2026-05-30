@@ -5,7 +5,7 @@ interface SearchBoxProps {
   onChange: (value: string) => void;
 }
 
-function SearchBox({ inputValue, onChange }: SearchBoxProps) {
+export default function SearchBox({ inputValue, onChange }: SearchBoxProps) {
   return (
     <input
       className={css.input}
@@ -16,5 +16,3 @@ function SearchBox({ inputValue, onChange }: SearchBoxProps) {
     />
   );
 }
-
-export default SearchBox;

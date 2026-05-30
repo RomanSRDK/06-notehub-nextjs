@@ -1,5 +1,7 @@
-const NoteDetails = () => {
-  return <div>page</div>;
-};
+import NoteDetailsClient from "./NoteDetails.client";
 
-export default NoteDetails;
+function page() {
+  return <NoteDetailsClient />;
+}
+
+export default page;

@@ -18,7 +18,7 @@ interface NoteFormProps {
   onClose: () => void;
 }
 
-function NoteForm({ onClose }: NoteFormProps) {
+export default function NoteForm({ onClose }: NoteFormProps) {
   const queryClient = useQueryClient();
 
   const initialValues: FormValues = {
@@ -111,5 +111,3 @@ function NoteForm({ onClose }: NoteFormProps) {
     </Formik>
   );
 }
-
-export default NoteForm;

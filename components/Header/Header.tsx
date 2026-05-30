@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import css from "./Header.module.css";
 
-function Header() {
+export default function Header() {
   return (
     <header className={css.header}>
       <Link href="/" aria-label="Home">
@@ -21,5 +21,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

@@ -10,19 +10,21 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useDebounce } from "use-debounce";
 
-import css from "./page.module.css";
 import SearchBox from "@/components/SearchBox/SearchBox";
+import Loading from "../loading";
 
-function NotesClient() {
+import css from "./page.module.css";
+
+export default function NotesClient() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setcurrentPage] = useState(1);
 
   const [searchText, setSearchText] = useState("");
   const [debouncedSearch] = useDebounce(searchText, 800);
 
-  const { data } = useQuery({
-    queryKey: ["notes", currentPage, debouncedSearch],
-    queryFn: () => fetchNotes(currentPage, debouncedSearch),
+  const { isPending, data } = useQuery({
+    queryKey: ["notes", { page: currentPage, search: debouncedSearch }],
+    queryFn: () => fetchNotes({ page: currentPage, search: debouncedSearch }),
     refetchOnMount: false,
     placeholderData: keepPreviousData,
   });
@@ -67,7 +69,7 @@ function NotesClient() {
         </button>
       </header>
 
-      {/* {isPending && <Loader />} */}
+      {isPending && <Loading />}
       {data && data.notes.length > 0 && <NoteList allNotes={data.notes} />}
       <Toaster />
 
@@ -79,5 +81,3 @@ function NotesClient() {
     </div>
   );
 }
-
-export default NotesClient;

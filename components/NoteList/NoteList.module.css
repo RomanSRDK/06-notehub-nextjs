@@ -38,6 +38,10 @@
   overflow: hidden;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .button {
   align-self: flex-end;
   padding: 6px 12px;

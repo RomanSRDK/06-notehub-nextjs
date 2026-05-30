@@ -8,7 +8,11 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-function Pagination({ totalPages, page, onPageChange }: PaginationProps) {
+export default function Pagination({
+  totalPages,
+  page,
+  onPageChange,
+}: PaginationProps) {
   return (
     <ReactPaginate
       pageCount={totalPages}
@@ -23,5 +27,3 @@ function Pagination({ totalPages, page, onPageChange }: PaginationProps) {
     />
   );
 }
-
-export default Pagination;

@@ -4,12 +4,13 @@ import { deleteNote } from "@/lib/api";
 import { Note } from "@/types/note";
 
 import css from "./NoteList.module.css";
+import Link from "next/link";
 
 interface NoteListProps {
   allNotes: Note[];
 }
 
-function NoteList({ allNotes }: NoteListProps) {
+export default function NoteList({ allNotes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
@@ -46,6 +47,9 @@ function NoteList({ allNotes }: NoteListProps) {
           <p className={css.content}>{note.content}</p>
           <div className={css.footer}>
             <span className={css.tag}>{note.tag}</span>
+            <Link href={`/notes/${note.id}`} className={css.link}>
+              View details
+            </Link>
             <button className={css.button} onClick={() => mutate(note.id)}>
               Delete
             </button>
@@ -55,5 +59,3 @@ function NoteList({ allNotes }: NoteListProps) {
     </ul>
   );
 }
-
-export default NoteList;
