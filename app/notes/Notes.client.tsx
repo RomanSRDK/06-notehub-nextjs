@@ -13,7 +13,7 @@ import { useDebounce } from "use-debounce";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Loading from "../loading";
 
-import css from "./page.module.css";
+import css from "./NotesPage.module.css";
 
 export default function NotesClient() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,8 +52,8 @@ export default function NotesClient() {
   };
 
   return (
-    <div className={css.app}>
-      <header className={css.toolbar}>
+    <main className={css.app}>
+      <div className={css.toolbar}>
         <SearchBox inputValue={searchText} onChange={handleSearchChange} />
 
         {data && data.totalPages > 1 && (
@@ -67,7 +67,7 @@ export default function NotesClient() {
         <button className={css.button} onClick={openModal}>
           Create note +
         </button>
-      </header>
+      </div>
 
       {isPending && <Loading />}
       {data && data.notes.length > 0 && <NoteList allNotes={data.notes} />}
@@ -78,6 +78,6 @@ export default function NotesClient() {
           <NoteForm onClose={closeModal} />
         </Modal>
       )}
-    </div>
+    </main>
   );
 }
